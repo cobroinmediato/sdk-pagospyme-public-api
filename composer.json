@@ -3,7 +3,7 @@
   "type": "library",
   "homepage": "https://github.com/cobroinmediato/sdk-pagospyme-public-api",
   "license": "MIT",
-  "version": "1.8.0",
+  "version": "1.0.0",
   "config": {
     "platform": {
         "php": "5.6"
@@ -11,14 +11,9 @@
   },
   "authors": [
     {
-      "name": "imasson",
+      "name": "Aoshido",
       "role": "Developer",
-      "homepage": "https://github.com/imasson"
-    },
-    {
-      "name": "joelibaceta",
-      "role": "Developer",
-      "homepage": "https://github.com/joelibaceta"
+      "homepage": "https://github.com/Aoshido"
     }
   ],
   "require": {
