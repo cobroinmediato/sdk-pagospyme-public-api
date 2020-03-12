@@ -1,7 +1,7 @@
 {
-  "name": "mercadopago/dx-php",
+  "name": "cobroinmediato/pagospyme-sdk-public-api-php",
   "type": "library",
-  "homepage": "https://github.com/mercadopago/dx-php",
+  "homepage": "https://github.com/cobroinmediato/sdk-pagospyme-public-api",
   "license": "MIT",
   "version": "1.8.0",
   "config": {
