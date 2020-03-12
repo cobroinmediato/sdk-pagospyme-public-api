@@ -3,7 +3,6 @@
   "type": "library",
   "homepage": "https://github.com/cobroinmediato/sdk-pagospyme-public-api",
   "license": "MIT",
-  "version": "1.0.0",
   "config": {
     "platform": {
         "php": "5.6"
