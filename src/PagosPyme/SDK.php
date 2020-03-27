@@ -36,6 +36,21 @@ class SDK {
     }
 
     /**
+     * Set Api key for clients.
+     */
+    public static function setApiKey($apiKey) {
+        if (!isset(self::$_config)) {
+            self::initialize();
+        }
+        self::$_config->configure(['x-api-key' => $apiKey]);
+        self::$_restClient->setHttpParam('x-api-key', self::$_config->get('x-api-key'));
+    }
+
+    public static function getApiKey() {
+        return self::$_config->get('x-api-key');
+    }
+
+    /**
      * Set Access Token for SDK .
      */
     public static function setAccessToken($access_token) {

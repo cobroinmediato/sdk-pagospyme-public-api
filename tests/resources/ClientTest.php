@@ -7,11 +7,10 @@ class ClientTest extends TestCase {
     public static function setUpBeforeClass() {
         PagosPyme\SDK::cleanCredentials();
         PagosPyme\SDK::setAccessToken(getenv('ACCESS_TOKEN'));
-        PagosPyme\SDK::setMultipleCredentials(
-                array(
-                    "MLA" => "MLA_ACCESS_TOKEN"
-                )
-        );
+        PagosPyme\SDK::setApiKey('hola');
+        PagosPyme\SDK::setMultipleCredentials(array(
+            "MLA" => "MLA_ACCESS_TOKEN"
+        ));
     }
 
     public function testCreateCorrectClient() {

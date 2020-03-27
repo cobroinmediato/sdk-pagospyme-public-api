@@ -27,7 +27,7 @@ class Config extends Config\AbstractConfig {
      */
     protected function getDefaults() {
         return [
-            'base_url' => 'http://api.pagospyme.local/app_dev.php',
+            'base_url' => 'https://api.pagospyme.com',
             'CLIENT_ID' => '',
             'CLIENT_SECRET' => '',
             'USER_ID' => '',
@@ -35,6 +35,7 @@ class Config extends Config\AbstractConfig {
             'ACCESS_TOKEN' => '',
             'REFRESH_TOKEN' => '',
             'sandbox_mode' => true,
+            'x-api-key' => ''
         ];
     }
 
@@ -100,7 +101,7 @@ class Config extends Config\AbstractConfig {
      * @param $value
      */
     public function set($key, $value) {
-//        parent::set($key, $value);
+        parent::set($key, $value);
 //
 //        if ($key == "ACCESS_TOKEN") { 
 //            $user = $this->getUserId($value);

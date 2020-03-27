@@ -47,10 +47,11 @@ class RestClient {
             'User-Agent' => 'PagosPyme DX-PHP SDK/ v' . Version::$_VERSION,
             'x-product-id' => 'BC32A7RU643001OI3940',
             'x-tracking-id' => 'platform:' . PHP_MAJOR_VERSION . '|' . PHP_VERSION . ',type:SDK' . Version::$_VERSION . ',so;',
-            'x-api-key' => 'test',
-            'x-consumer-custom-id' => '973',
-            'x-consumer-username' => 'test',
-            'x-consumer-groups' => 'test',
+            'x-api-key' => self::$defaultParams['x-api-key'],
+//            'x-api-key' => 'test',
+//            'x-consumer-custom-id' => '973',
+//            'x-consumer-username' => 'test',
+//            'x-consumer-groups' => 'test',
         );
         if ($customHeaders) {
             $default_header = array_merge($default_header, $customHeaders);

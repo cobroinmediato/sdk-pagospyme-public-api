@@ -37,7 +37,7 @@ abstract class AbstractConfig {
 
     public function clean() {
         return $this->data = array(
-            'base_url' => 'http://api.pagospyme.local/app_dev.php',
+            'base_url' => 'https://api.pagospyme.com',
         );
     }
 
