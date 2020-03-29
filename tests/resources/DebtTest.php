@@ -19,7 +19,7 @@ class DebtTest extends TestCase {
         $debt = new PagosPyme\Debt();
         $debt->reference = 'Test00000006';
         $debt->client_reference = '2253979';            //Aca va el ID de un cliente, no el reference, ojo 
-        $debt->client_identification_code = '35000000';
+        $debt->client_identification_number = '35000000';
         $debt->amount = 20.40;
         $debt->due_date = new \DateTime('now');
         $debt->amount2 = 20.40;

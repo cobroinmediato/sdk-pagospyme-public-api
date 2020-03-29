@@ -38,7 +38,7 @@ class Debt extends Entity {
      * @Attribute(type = "string", required = true)
      * @var string
      */
-    protected $client_identification_code;
+    protected $client_identification_number;
 
     /**
      * @Attribute(type = "float", required = true)
