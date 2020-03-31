@@ -167,13 +167,13 @@ abstract class Entity {
 
         $response = self::$_manager->execute($entityToQuery, 'get');
         if ($response['code'] == "200" || $response['code'] == "201") {
-            $results = $response['body']['results'];
+            $results = $response['body']['data'];
             foreach ($results as $result) {
                 $entity = new $class();
                 $entity->_fillFromArray($entity, $result);
                 $searchResult->append($entity);
             }
-            $searchResult->setPaginateParams($response['body']['paging']);
+//            $searchResult->setPaginateParams($response['body']['paging']);
             $searchResult->_filters = $filters;
         } elseif (intval($response['code']) >= 400 && intval($response['code']) < 500) {
 //            $searchResult->process_error_body($response['body']);

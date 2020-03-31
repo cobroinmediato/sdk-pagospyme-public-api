@@ -8,7 +8,7 @@ use PagosPyme\Annotation\Attribute;
 
 /**
  * @RestMethod(resource="/clients/:id", method="read")
- * @RestMethod(resource="/clients/search", method="search")
+ * @RestMethod(resource="/clients", method="search")
  * @RestMethod(resource="/clients", method="create")
  * @RestMethod(resource="/clients/:id", method="update")
  * @RestMethod(resource="/clients/:id", method="delete")
@@ -17,7 +17,7 @@ use PagosPyme\Annotation\Attribute;
 class Client extends Entity {
 
     /**
-     * @Attribute(primaryKey = true)
+     * @Attribute(primaryKey = true, type = "integer")
      * @var string
      */
     protected $id;

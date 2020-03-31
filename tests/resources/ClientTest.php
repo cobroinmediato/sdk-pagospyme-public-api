@@ -13,80 +13,101 @@ class ClientTest extends TestCase {
         ));
     }
 
-    public function testCreateCorrectClient() {
+//    public function testGetClient() {
+//        $client = \PagosPyme\Client::find_by_id(2253979);
+//        $this->assertEquals('Vanina Pugliese', $client->name);
+//    }
 
-        $client = new PagosPyme\Client();
-        $client->identification_number = 00000001;
-        $client->reference = "Test00007";
-        $client->name = "Aoshido001";
-        $client->email = "Aoshdo";
+    public function testSearchClient() {
+        $clients = \PagosPyme\Client::search(array(
+                    'reference' => "leg000001"
+//            'identification_number' => "1234"
+        ));
 
-        $client->save();
-        $this->assertEquals('Aoshido001', $client->name);
-        $this->assertTrue(is_numeric($client->id));
+        $client = end($clients);
+//        var_dump($clients);
+//        var_dump (sizeof($clients));
 
-        $client->delete();
+        $this->assertEquals(1, sizeof($clients));
+        $this->assertTrue($client instanceof \PagosPyme\Client);
+        $this->assertEquals('Vanina Pugliese', $client->name);
     }
 
-    public function testCreateAndUpdateClient() {
+    /*
+      public function testCreateCorrectClient() {
 
-        $client = new PagosPyme\Client();
-        $client->identification_number = 00000001;
-        $client->reference = "Test00007";
-        $client->name = "Aoshido001";
-        $client->email = "Aoshdo";
+      $client = new PagosPyme\Client();
+      $client->identification_number = 00000001;
+      $client->reference = "Test00007";
+      $client->name = "Aoshido001";
+      $client->email = "Aoshdo";
 
-        $client->save();
-        $this->assertEquals('Aoshido001', $client->name);
-        $this->assertTrue(is_numeric($client->id));
+      $client->save();
+      $this->assertEquals('Aoshido001', $client->name);
+      $this->assertTrue(is_numeric($client->id));
 
-        $client->name = "Aoshido002";
-        $client->save();
-        $this->assertEquals('Aoshido002', $client->name);
+      $client->delete();
+      }
 
-        $client->delete();
-    }
+      public function testCreateAndUpdateClient() {
 
-    public function testCreateExistingClient() {
+      $client = new PagosPyme\Client();
+      $client->identification_number = 00000001;
+      $client->reference = "Test00007";
+      $client->name = "Aoshido001";
+      $client->email = "Aoshdo";
 
-        $client = new PagosPyme\Client();
-        $client->identification_number = 00000001;
-        $client->reference = "Test00007";
-        $client->name = "Aoshido001";
-        $client->email = "Aoshdo";
+      $client->save();
+      $this->assertEquals('Aoshido001', $client->name);
+      $this->assertTrue(is_numeric($client->id));
 
-        $client->save();
-        $this->assertEquals('Aoshido001', $client->name);
-        $this->assertTrue(is_numeric($client->id));
+      $client->name = "Aoshido002";
+      $client->save();
+      $this->assertEquals('Aoshido002', $client->name);
 
-        $client2 = new PagosPyme\Client();
-        $client2->identification_number = 00000001;
-        $client2->reference = "Test00007";
-        $client2->name = "Aoshido001";
-        $client2->email = "Aoshdo";
+      $client->delete();
+      }
 
-        try {
-            $client2->save();
-        } catch (Exception $ex) {
-            $this->assertEquals('Internal API Error', $ex->getMessage());
-        }
+      public function testCreateExistingClient() {
 
-        $client->delete();
-    }
+      $client = new PagosPyme\Client();
+      $client->identification_number = 00000001;
+      $client->reference = "Test00007";
+      $client->name = "Aoshido001";
+      $client->email = "Aoshdo";
 
-    public function testCreateIncompleteClient() {
+      $client->save();
+      $this->assertEquals('Aoshido001', $client->name);
+      $this->assertTrue(is_numeric($client->id));
 
-        $client = new PagosPyme\Client();
-        $client->identification_number = 00000001;
-//        $client->reference = "Test00003";
+      $client2 = new PagosPyme\Client();
+      $client2->identification_number = 00000001;
+      $client2->reference = "Test00007";
+      $client2->name = "Aoshido001";
+      $client2->email = "Aoshdo";
 
-        try {
-            $client->save();
-        } catch (\Exception $ex) {
-            $this->assertEquals($ex->getMessage(), 'Error required in attribute reference');
-        }
-    }
+      try {
+      $client2->save();
+      } catch (Exception $ex) {
+      $this->assertEquals('Internal API Error', $ex->getMessage());
+      }
 
+      $client->delete();
+      }
+
+      public function testCreateIncompleteClient() {
+
+      $client = new PagosPyme\Client();
+      $client->identification_number = 00000001;
+      //        $client->reference = "Test00003";
+
+      try {
+      $client->save();
+      } catch (\Exception $ex) {
+      $this->assertEquals($ex->getMessage(), 'Error required in attribute reference');
+      }
+      }
+     */
 }
 
 ?>
