@@ -8,7 +8,7 @@ use PagosPyme\Annotation\Attribute;
 
 /**
  * @RestMethod(resource="/debts/:id", method="read")
- * @RestMethod(resource="/debts/search", method="search")
+ * @RestMethod(resource="/debts", method="search")
  * @RestMethod(resource="/debts", method="create")
  * @RestMethod(resource="/debts/:id", method="update")
  * @RestMethod(resource="/debts/:id", method="delete")

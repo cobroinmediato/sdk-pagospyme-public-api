@@ -7,6 +7,7 @@ class DebtTest extends TestCase {
     public static function setUpBeforeClass() {
         PagosPyme\SDK::cleanCredentials();
         PagosPyme\SDK::setAccessToken(getenv('ACCESS_TOKEN'));
+        PagosPyme\SDK::setApiKey('hola');
         PagosPyme\SDK::setMultipleCredentials(
                 array(
                     "MLA" => "MLA_ACCESS_TOKEN"
@@ -14,6 +15,21 @@ class DebtTest extends TestCase {
         );
     }
 
+    public function testSearchDebt() {
+        $debts = \PagosPyme\Debt::search(array(
+                    'reference' => "AFA"
+//            'identification_number' => "1234"
+        ));
+
+        $debt = end($debts);
+//        var_dump($clients);
+//        var_dump (sizeof($clients));
+
+        $this->assertEquals(1, sizeof($debts));
+        $this->assertTrue($debt instanceof \PagosPyme\Debt);
+        $this->assertEquals(10, $debt->amount);
+    }
+/*
     public function testCreateCorrectDebt() {
 
         $debt = new PagosPyme\Debt();
@@ -24,16 +40,15 @@ class DebtTest extends TestCase {
         $debt->due_date = new \DateTime('now');
         $debt->amount2 = 20.40;
         $debt->due_date2 = new \DateTime('now');
-        
+
         $debt->save();
         $this->assertTrue(is_numeric($debt->id));
         $debt->delete();
     }
-
+*/
 //    public function testCreateIncompleteDebt() {
 //        
 //    }
-
 }
 
 ?>
