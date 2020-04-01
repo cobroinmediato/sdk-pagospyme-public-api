@@ -15,6 +15,21 @@ class DebtTest extends TestCase {
         );
     }
 
+    public function testSearchinexistentDebt() {
+        $debts = \PagosPyme\Debt::search(array(
+                    'reference' => "xxx"
+//            'identification_number' => "1234"
+        ));
+
+        $debt = end($debts);
+//        var_dump($clients);
+//        var_dump (sizeof($clients));
+
+        $this->assertEquals(1, sizeof($debts));
+        $this->assertTrue($debt instanceof \PagosPyme\Debt);
+        $this->assertEquals(10, $debt->amount);
+    }
+
     public function testSearchDebt() {
         $debts = \PagosPyme\Debt::search(array(
                     'reference' => "AFA"
@@ -35,6 +50,7 @@ class DebtTest extends TestCase {
         $debt = new PagosPyme\Debt();
         $debt->reference = 'Test00000006';
         $debt->client_reference = '2253979';            //Aca va el ID de un cliente, no el reference, ojo 
+        $debt->internal_reference = '2253979';            //ID de la deuda en el core
         $debt->client_identification_number = '35000000';
         $debt->amount = 20.40;
         $debt->due_date = new \DateTime('now');

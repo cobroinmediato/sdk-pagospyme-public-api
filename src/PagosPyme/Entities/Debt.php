@@ -38,6 +38,12 @@ class Debt extends Entity {
      * @Attribute(type = "string", required = true)
      * @var string
      */
+    protected $internal_reference;
+
+    /**
+     * @Attribute(type = "string", required = true)
+     * @var string
+     */
     protected $client_identification_number;
 
     /**
