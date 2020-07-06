@@ -209,7 +209,8 @@ abstract class Entity {
             return true;
         } elseif (intval($response['code']) >= 400 && intval($response['code']) < 500) {
             // A recuperable error 
-            throw new Exception("Internal API Error");
+            throw new Exception($response['body']['message']);
+//            throw new Exception("Internal API Error");
 //            $this->process_error_body($response['body']);
 //            return false;
         } else {
@@ -252,7 +253,8 @@ abstract class Entity {
             return true;
         } elseif (intval($response['code']) >= 300 && intval($response['code']) < 500) {
             // A recuperable error
-            throw new Exception("Internal API Error");
+            throw new Exception($response['body']['message']);
+//            throw new Exception("Internal API Error");
 //            $this->process_error_body($response['body']);
 //            return false;
         } else {
