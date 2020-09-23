@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-class ClientTest extends TestCase {
+class PaymentLinkTest extends TestCase {
 
     public static function setUpBeforeClass() {
         PagosPyme\SDK::cleanCredentials();
@@ -14,32 +14,39 @@ class ClientTest extends TestCase {
     }
 
     public function testSearchClient() {
-        $clients = \PagosPyme\Client::search(array(
-                    'reference' => "leg000001"
+        $paymentLinks = \PagosPyme\PaymentLink::search(array(
+                    'reference' => "test_link_pago8"
         ));
-        $client = end($clients);
+        $paymentLink = end($paymentLinks);
 
-        $this->assertEquals(1, sizeof($clients));
-        $this->assertTrue($client instanceof \PagosPyme\Client);
-        $this->assertEquals('Vanina Pugliese', $client->name);
+        $this->assertEquals(1, sizeof($paymentLinks));
+        $this->assertTrue($paymentLink instanceof \PagosPyme\PaymentLink);
+        $this->assertEquals('test_link_pago8', $paymentLink->reference);
+    }
+
+    public function testCreateCorrectPaymentLink() {
+
+        $paymentLink = new PagosPyme\PaymentLink();
+        $paymentLink->reference = "TestSDK00007";
+        $paymentLink->valid = TRUE;
+        $paymentLink->amount = 20;
+        $paymentLink->debt_reference = "Aoshido001";
+        $paymentLink->due_date = new \DateTime('tomorrow');
+        $paymentLink->debt_due_date = new \DateTime('tomorrow');
+        $paymentLink->debt_amount = 20;
+        $paymentLink->enabled_payment_methods = array('cash');
+        $paymentLink->client_reference = 'test';
+        $paymentLink->client_name = 'test';
+        $paymentLink->client_identification = 'test';
+
+        $paymentLink->save();
+        $this->assertEquals('TestSDK00007', $paymentLink->reference);
+        $this->assertTrue(is_numeric($paymentLink->id));
+
+        $paymentLink->delete();
     }
 
     /*
-      public function testCreateCorrectClient() {
-
-      $client = new PagosPyme\Client();
-      $client->identification_number = 00000001;
-      $client->reference = "Test00007";
-      $client->name = "Aoshido001";
-      $client->email = "Aoshdo";
-
-      $client->save();
-      $this->assertEquals('Aoshido001', $client->name);
-      $this->assertTrue(is_numeric($client->id));
-
-      $client->delete();
-      }
-
       public function testCreateAndUpdateClient() {
 
       $client = new PagosPyme\Client();

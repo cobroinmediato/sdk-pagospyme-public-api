@@ -15,12 +15,12 @@ class DebtTest extends TestCase {
         );
     }
 
-    public function testSearchinexistentDebt() {
+    public function testSearchInexistentDebt() {
         $debts = \PagosPyme\Debt::search(array(
                     'reference' => "xxx"
 //            'identification_number' => "1234"
         ));
-
+var_dump($debts);
         $debt = end($debts);
 //        var_dump($clients);
 //        var_dump (sizeof($clients));

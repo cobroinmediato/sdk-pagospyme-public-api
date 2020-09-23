@@ -59,13 +59,13 @@ class Debt extends Entity {
     protected $due_date;
 
     /**
-     * @Attribute(type = "float", required = true)
+     * @Attribute(type = "", required = false)
      * @var string
      */
     protected $amount2;
 
     /**
-     * @Attribute(type = "date", required = true)
+     * @Attribute(type = "date", required = false)
      * @var string
      */
     protected $due_date2;
