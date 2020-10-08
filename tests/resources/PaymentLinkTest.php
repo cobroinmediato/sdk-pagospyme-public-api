@@ -38,6 +38,7 @@ class PaymentLinkTest extends TestCase {
         $paymentLink->client_reference = 'test';
         $paymentLink->client_name = 'test';
         $paymentLink->client_identification = 'test';
+        $paymentLink->email = 'test';
 
         $paymentLink->save();
         $this->assertEquals('TestSDK00007', $paymentLink->reference);

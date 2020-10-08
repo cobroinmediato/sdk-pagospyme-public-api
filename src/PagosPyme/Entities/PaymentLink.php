@@ -88,4 +88,10 @@ class PaymentLink extends Entity {
      */
     protected $client_identification;
 
+    /**
+     * @Attribute(type = "string", required = true)
+     * @var integer
+     */
+    protected $email;
+
 }
