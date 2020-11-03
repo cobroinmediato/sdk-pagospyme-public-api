@@ -94,4 +94,10 @@ class PaymentLink extends Entity {
      */
     protected $email;
 
+    /**
+     * @Attribute(type = "boolean", required = false)
+     * @var integer
+     */
+    protected $closed;
+
 }
