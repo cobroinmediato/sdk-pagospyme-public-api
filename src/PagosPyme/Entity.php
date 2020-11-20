@@ -331,7 +331,7 @@ abstract class Entity {
         }
 
         foreach ($result as $key => $value) {
-            if (!is_bool($value) && empty($value)) {
+            if (!is_bool($value) && empty($value) && $value !== "0") {
                 unset($result[$key]);
             }
         }
