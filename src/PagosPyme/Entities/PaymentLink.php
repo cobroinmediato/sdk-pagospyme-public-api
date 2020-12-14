@@ -35,7 +35,7 @@ class PaymentLink extends Entity {
     protected $valid;
 
     /**
-     * @Attribute(type = "string", required = true)
+     * @Attribute(type = "string", required = false)
      * @var string
      */
     protected $amount;
