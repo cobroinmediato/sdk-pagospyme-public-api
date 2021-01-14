@@ -166,6 +166,7 @@ abstract class Entity {
         self::$_manager->setQueryParams($entityToQuery, $filters);
 
         $response = self::$_manager->execute($entityToQuery, 'get');
+        
         if ($response['code'] == "200" || $response['code'] == "201") {
             $results = $response['body']['data'];
             foreach ($results as $result) {
@@ -497,6 +498,33 @@ abstract class Entity {
 //                $this->process_error_body($response['body']);
             }
             return false;
+        } else {
+            throw new Exception("Internal API Error");
+        }
+    }
+    
+    /**
+     * @return mixed
+     */
+    public static function refund($trace , $options = []) {
+        $class = get_called_class();
+        $entity = new $class();
+        $params = array(
+            'trace' => $trace
+        );
+        
+        self::$_manager->setEntityUrl($entity, 'refund', $params);
+        
+        $response = self::$_manager->execute($entity, 'post',$options);
+        
+        if ($response['code'] == "200" || $response['code'] == "201") {
+            $entity->_fillFromArray($entity, $response['body']);
+            $entity->_last = clone $entity;
+            return true;
+        } elseif (intval($response['code']) == 404) {
+            return null;
+        } elseif (intval($response['code']) >= 400 && intval($response['code']) < 500) {
+            throw new Exception($response['body']['message']);
         } else {
             throw new Exception("Internal API Error");
         }
