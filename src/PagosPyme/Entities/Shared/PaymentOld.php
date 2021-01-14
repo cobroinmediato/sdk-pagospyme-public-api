@@ -14,7 +14,7 @@ use PagosPyme\Annotation\Attribute;
  * @RestMethod(resource="/v1/payments/:id/refunds", method="refund")
  * @RequestParam(param="access_token")
  */
-class Payment extends Entity {
+class PaymentOld extends Entity {
 
     /**
      * @Attribute(primaryKey = true)
