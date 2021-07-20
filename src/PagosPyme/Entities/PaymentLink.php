@@ -41,6 +41,18 @@ class PaymentLink extends Entity {
     protected $amount;
 
     /**
+     * @Attribute(type = "string", required = false)
+     * @var string
+     */
+    protected $min_amount;
+
+    /**
+     * @Attribute(type = "string", required = false)
+     * @var string
+     */
+    protected $max_amount;
+
+    /**
      * @Attribute(type = "string", required = true)
      * @var string
      */
@@ -60,7 +72,7 @@ class PaymentLink extends Entity {
 
     /**
      * @Attribute(type = "float", required = true)
-     * @var DateTime
+     * @var string
      */
     protected $debt_amount;
 
